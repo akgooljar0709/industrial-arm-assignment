@@ -325,7 +325,7 @@ Use the sliders to try:
 
 ---
 
-**Author:** Robotics Student  
+**Author:** Akash
 **License:** BSD-3-Clause  
 **GitHub:** https://github.com/akgooljar0709/industrial-arm-assignment
 
