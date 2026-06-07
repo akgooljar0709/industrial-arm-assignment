@@ -49,17 +49,15 @@ Honestly, for a super simple 2-joint robot that never changes, plain XML would b
 
 ### The Links (7 parts)
 
-| Part | Weight | What It Does | Collision |
+| Part  | What It Does | Collision |
 |------|--------|--------------|-----------|
-| base_link | 1.5 kg | Heavy base with motors | Cylinder |
-| base_plate | 1.0 kg | Rotates on joint1 | Cylinder |
-| forward_drive_arm | 0.8 kg | First arm segment | Box |
-| horizontal_arm | 0.5 kg | Reaches out | Box |
-| claw_support | 0.3 kg | Holds gripper | Box |
-| gripper_right | 0.05 kg | Right finger | Box |
-| gripper_left | 0.05 kg | Left finger (follows right) | Box |
-
-**Note on weights:** I estimated these based on what makes sense for an aluminum robot with built-in motors. The base is heavier because it has all the drive electronics.
+| base_link | Heavy base with motors | Cylinder |
+| base_plate | Rotates on joint1 | Cylinder |
+| forward_drive_arm  | First arm segment | Box |
+| horizontal_arm | Reaches out | Box |
+| claw_support | Holds gripper | Box |
+| gripper_right  | Right finger | Box |
+| gripper_left | Left finger (follows right) | Box |
 
 ### The Joints (5 active)
 
