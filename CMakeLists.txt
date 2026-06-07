@@ -24,6 +24,6 @@ endif()
 ament_package()
 
 # Ensure assets are copied to install share directory
-install(DIRECTORY xacro meshes
+install(DIRECTORY xacro meshes launch config
   DESTINATION share/${PROJECT_NAME}
 )

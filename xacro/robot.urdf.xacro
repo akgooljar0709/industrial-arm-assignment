@@ -48,7 +48,7 @@
 
   <link name="base_plate">
     <visual>
-      <origin xyz="-0.39 -0.39 -0.56" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://industrial_arm_description/meshes/base_plate.stl" scale="${mesh_scale}"/>
       </geometry>
@@ -63,14 +63,14 @@
   <joint name="joint2" type="revolute">
     <parent link="base_plate"/>
     <child link="forward_drive_arm"/>
-    <origin xyz="0 0 0.035" rpy="0 0 0"/>
+    <origin xyz="0 0 0.03" rpy="0 -${PI/2} ${PI/2}"/>
     <axis xyz="0 1 0"/>
     <limit lower="-${PI/2}" upper="${PI/2}" effort="${joint_effort}" velocity="${joint_velocity}"/>
   </joint>
 
   <link name="forward_drive_arm">
     <visual>
-      <origin xyz="0.19 0.06 -0.08" rpy="0 -${PI/2} ${PI/2}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://industrial_arm_description/meshes/forward_drive_arm.stl" scale="${mesh_scale}"/>
       </geometry>
@@ -85,14 +85,14 @@
   <joint name="joint3" type="revolute">
     <parent link="forward_drive_arm"/>
     <child link="horizontal_arm"/>
-    <origin xyz="0 0 0.08" rpy="0 0 0"/>
+    <origin xyz="0 0 0.08" rpy="${PI/2} 0 ${PI/2}"/>
     <axis xyz="0 1 0"/>
     <limit lower="-${PI/2}" upper="${PI/2}" effort="${joint_effort}" velocity="${joint_velocity}"/>
   </joint>
 
   <link name="horizontal_arm">
     <visual>
-      <origin xyz="0.03 -0.4 -0.06" rpy="${PI/2} 0 ${PI/2}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://industrial_arm_description/meshes/horizontal_arm.stl" scale="${mesh_scale}"/>
       </geometry>
@@ -107,14 +107,14 @@
   <joint name="joint4" type="revolute">
     <parent link="horizontal_arm"/>
     <child link="claw_support"/>
-    <origin xyz="0.082 0 0" rpy="0 0 0"/>
+    <origin xyz="0.082 0 0" rpy="0 0 ${PI/2}"/>
     <axis xyz="0 0 1"/>
     <limit lower="-${PI/2}" upper="${PI/2}" effort="${joint_effort}" velocity="${joint_velocity}"/>
   </joint>
 
   <link name="claw_support">
     <visual>
-      <origin rpy="0 0 ${PI/2}" xyz="0 -0.05 -0.15"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://industrial_arm_description/meshes/claw_support.stl" scale="${mesh_scale}"/>
       </geometry>
@@ -129,14 +129,14 @@
   <joint name="joint5_right" type="prismatic">
     <parent link="claw_support"/>
     <child link="gripper_right"/>
-    <origin xyz="0.01 -0.004 -0.01" rpy="0 0 -${PI/2}"/>
+    <origin xyz="0 -0.01 0" rpy="0 0 -${PI/2}"/>
     <axis xyz="1 0 0"/>
     <limit lower="0.0" upper="0.022" effort="10.0" velocity="0.5"/>
   </joint>
 
   <link name="gripper_right">
     <visual>
-      <origin xyz="-0.1 0.5 -0.1" rpy="0 0 -${PI/2}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://industrial_arm_description/meshes/gripper_right.stl" scale="${mesh_scale}"/>
       </geometry>
@@ -151,7 +151,7 @@
   <joint name="joint5_left" type="prismatic">
     <parent link="claw_support"/>
     <child link="gripper_left"/>
-    <origin xyz="0.01 0.004 -0.01" rpy="0 0 -${PI/2}"/>
+    <origin xyz="0 0.01 0" rpy="0 0 -${PI/2}"/>
     <axis xyz="1 0 0"/>
     <limit lower="0.0" upper="0.022" effort="10.0" velocity="0.5"/>
     <mimic joint="joint5_right" multiplier="1"/>
@@ -159,7 +159,7 @@
 
   <link name="gripper_left">
     <visual>
-      <origin xyz="-0.04 0.5 -0.1" rpy="0 0 -${PI/2}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://industrial_arm_description/meshes/gripper_left.stl" scale="${mesh_scale}"/>
       </geometry>
