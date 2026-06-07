@@ -49,15 +49,15 @@ Honestly, for a super simple 2-joint robot that never changes, plain XML would b
 
 ### The Links (7 parts)
 
-| Part  | What It Does | Collision |
-|------|--------|--------------|-----------|
-| base_link | Heavy base with motors | Cylinder |
-| base_plate | Rotates on joint1 | Cylinder |
-| forward_drive_arm  | First arm segment | Box |
-| horizontal_arm | Reaches out | Box |
-| claw_support | Holds gripper | Box |
-| gripper_right  | Right finger | Box |
-| gripper_left | Left finger (follows right) | Box |
+| Part | What It Does | Collision |
+|------|--------------|-----------|
+| `base_link` | Heavy base with motors | Cylinder |
+| `base_plate` | Rotates on joint1 | Cylinder |
+| `forward_drive_arm` | First arm segment | Box |
+| `horizontal_arm` | Reaches out | Box |
+| `claw_support` | Holds gripper | Box |
+| `gripper_right` | Right finger | Box |
+| `gripper_left` | Left finger (follows right) | Box |
 
 ### The Joints (5 active)
 
