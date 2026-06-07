@@ -1,6 +1,6 @@
 # Industrial Arm Robot - ROS 2 & MoveIt 2
 
-**Course:** Master 1 Robotics  
+**Course:** Master AI & Robotics  
 **Assignment:** Robot Arm Modeling with URDF/Xacro  
 **GitHub:** [industrial-arm-assignment](https://github.com/akgooljar0709/industrial-arm-assignment)
 
@@ -114,18 +114,23 @@ git clone https://github.com/akgooljar0709/industrial-arm-assignment.git
 cd ~/ros2_ws
 ```
 
-**3. Install Dependencies**
+**3. Install Required Packages**
 
 ```bash
 sudo apt install -y python3-colcon-common-extensions
+sudo apt install -y ros-jazzy-joint-state-publisher-gui
+sudo apt install -y ros-jazzy-rviz2
 
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
+**Note:** If using Humble, replace `jazzy` with `humble` in the commands above.
+
 **4. Build It**
 
 ```bash
+cd ~/ros2_ws
 colcon build --packages-select industrial_arm_description
 source ~/ros2_ws/install/setup.bash
 ```
@@ -145,7 +150,16 @@ If you see `industrial_arm_description`, you're good!
 ### View the Robot in RViz
 
 ```bash
+# If not already sourced
 source ~/ros2_ws/install/setup.bash
+
+# If the build files are fresh, do a clean rebuild
+cd ~/ros2_ws
+rm -rf build install log
+colcon build --packages-select industrial_arm_description
+source install/setup.bash
+
+# Launch the robot
 ros2 launch industrial_arm_description display.launch.py
 ```
 
@@ -269,8 +283,6 @@ Use the sliders to try:
 - **joint4:** Twist the wrist
 - **joint5_right/left:** Open and close gripper fingers (they move together)
 
----
-
 ## Issues I Hit & How I Fixed Them
 
 ### 1. Meshes Were Way Too Big
@@ -317,16 +329,18 @@ Use the sliders to try:
 
 | Error | Fix |
 |-------|-----|
-| `ros2: command not found` | Run: `source /opt/ros/humble/setup.bash` (or jazzy) |
+| `ros2: command not found` | Run: `source /opt/ros/jazzy/setup.bash` (or humble) |
 | `Package not found` | Run: `source ~/ros2_ws/install/setup.bash` |
 | `Can't find URDF` | Check the file path in launch script |
-| `RViz won't open` | Install: `sudo apt install ros-humble-rviz2` |
-| `Meshes look weird` | They're empty files - see the section about STL files |
+| `RViz won't open` | Install: `sudo apt install ros-jazzy-rviz2` |
+| `Meshes look weird` | See "About the Mesh Files" section - they're empty |
+| `'joint_state_publisher_gui' not found` | Install: `sudo apt install ros-jazzy-joint-state-publisher_gui` |
+| `display.launch.py not found` | Run clean rebuild: `rm -rf build install log && colcon build` |
+| `URDF parsing failed` | Usually due to empty mesh files - see mesh section |
+| `TF errors in console` | These are warnings from empty meshes - safe to ignore |
+| Package install fails | Run: `rosdep update && rosdep install --from-paths src --ignore-src -r -y` |
 
 ---
 
-**Author:** Akash
-**License:** BSD-3-Clause  
+**Author:** Akash 
 **GitHub:** https://github.com/akgooljar0709/industrial-arm-assignment
-
-Have fun with the robot! 🤖
