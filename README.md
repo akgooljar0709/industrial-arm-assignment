@@ -43,39 +43,6 @@ If I used plain XML, I'd have to copy-paste the same link and joint definitions 
 ### When I'd Use Plain URDF Instead
 Honestly, for a super simple 2-joint robot that never changes, plain XML would be fine. But anything with repeated structures? Xacro wins.
 
----
-
-## Robot Specifications
-
-### The Links (7 parts)
-
-| Part | Weight | What It Does | Collision |
-|------|--------|--------------|-----------|
-| base_link | 1.5 kg | Heavy base with motors | Cylinder |
-| base_plate | 1.0 kg | Rotates on joint1 | Cylinder |
-| forward_drive_arm | 0.8 kg | First arm segment | Box |
-| horizontal_arm | 0.5 kg | Reaches out | Box |
-| claw_support | 0.3 kg | Holds gripper | Box |
-| gripper_right | 0.05 kg | Right finger | Box |
-| gripper_left | 0.05 kg | Left finger (follows right) | Box |
-
-**Note on weights:** I estimated these based on what makes sense for an aluminum robot with built-in motors. The base is heavier because it has all the drive electronics.
-
-### The Joints (5 active)
-
-| Joint | Type | Movement | Range | Force | Speed |
-|-------|------|----------|-------|-------|-------|
-| joint1 | Revolute | Base rotation | ±180° | 30 N·m | 2 rad/s |
-| joint2 | Revolute | Arm pitch (up/down) | ±90° | 30 N·m | 2 rad/s |
-| joint3 | Revolute | Elbow pitch | ±90° | 30 N·m | 2 rad/s |
-| joint4 | Revolute | Wrist rotation | ±90° | 30 N·m | 2 rad/s |
-| joint5_right | Prismatic | Gripper open/close | 0-22mm | 10 N | 0.5 m/s |
-| joint5_left | Prismatic | Left finger (mirrors right) | 0-22mm | 10 N | 0.5 m/s |
-
-The gripper fingers are **linked together** - when the right finger opens, the left automatically opens at the same speed.
-
----
-
 ## Getting It Running
 
 ### What You Need
